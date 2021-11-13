@@ -1,0 +1,47 @@
+@use "./colors" as colors;
+
+.card {
+  height: 75%;
+  width: 100%;
+  background-color: rgba($color: colors.$gray-dark-300, $alpha: 0.75);
+  margin-inline: 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &.custom-border::before {
+    content: "";
+    position: absolute;
+    height: 150%;
+    width: 50%;
+    animation: custom-border-animation 3s linear infinite;
+  }
+  &.custom-border::after {
+    position: absolute;
+    content: "";
+    inset: 0.5rem;
+    background-color: colors.$gray-dark-300;
+    border-radius: 0.625rem;
+  }
+  &.border-1::before {
+    background: linear-gradient(#08aeea, #2af598);
+  }
+  &.border-2::before {
+    background: linear-gradient(#ffe53b, #ff2525);
+  }
+  &.border-3::before {
+    background: linear-gradient(#8ec5fc, #e0c3fc);
+  }
+}
+
+@keyframes custom-border-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

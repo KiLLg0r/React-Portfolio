@@ -1,0 +1,76 @@
+@use "./colors" as colors;
+
+#home .content {
+  position: absolute;
+  z-index: 5;
+
+  height: 100%;
+  width: 100%;
+  .col-home-text {
+    padding-inline: 10%;
+    color: colors.$gray-light-900;
+    flex-direction: column;
+    align-items: normal;
+
+    .main-title {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .secondary-subtitle {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: colors.$gray-light-500;
+      margin-bottom: 1rem;
+    }
+    .main-subtitle {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: rgba($color: colors.$accent, $alpha: 0.85);
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      color: colors.$gray-light-900;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      background-color: rgba($color: colors.$accent, $alpha: 0.9);
+      width: fit-content;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background-color: rgba($color: colors.$accent, $alpha: 0.55);
+        transition: background-color 0.3s ease-in-out;
+      }
+    }
+  }
+  .col-home-svg {
+    .browserWindow {
+      width: 90%;
+      height: 70%;
+      background-color: colors.$gray-dark-200;
+      border-radius: 1rem;
+      padding-top: 7.5%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 7.5%;
+        background-color: rgba($color: colors.$accent, $alpha: 0.9);
+        border-radius: 1rem 1rem 0 0;
+      }
+    }
+    svg {
+      width: 85%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+  }
+}
