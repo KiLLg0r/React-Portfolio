@@ -74,3 +74,15 @@
     }
   }
 }
+
+@media screen and (max-width: 45rem) {
+  #home {
+    height: 80vh !important;
+    .col-home-svg {
+      height: 50vh !important;
+    }
+    .col-home-text {
+      height: 30vh !important;
+    }
+  }
+}

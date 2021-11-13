@@ -12,10 +12,31 @@ header {
 }
 header .navbar {
   height: 100%;
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+header .navbar .hamburgerMenu {
+  cursor: pointer;
+  font-size: 2rem;
+}
+header .navbar.mobile .left-side .nav-links,
+header .navbar.mobile .right-side {
+  display: none;
+}
+header .navbar.mobile .hamburgerMenu {
+  display: block;
+}
+header .navbar.mobile .menu {
+  display: block;
+}
+header .navbar.desktop .menu {
+  display: none;
+}
+header .navbar .left-side {
+  display: flex;
   align-items: center;
 }
 header .navbar .logo {
@@ -24,6 +45,12 @@ header .navbar .logo {
 }
 header .navbar .logo img {
   height: 2rem;
+}
+header .navbar .right-side .link {
+  font-size: 1.5rem;
+}
+header .navbar .hamburgerMenu {
+  display: none;
 }
 header .navbar .nav-links {
   display: flex;
@@ -34,9 +61,10 @@ header .navbar .link {
   text-decoration: none;
   display: flex;
   align-items: center;
+  margin-left: 0.5rem;
 }
-header .navbar .link:not(:nth-last-child(1)) {
-  margin-right: 1rem;
+header .navbar .link:not(.logo-link):nth-child(1) {
+  margin-left: 1rem;
 }
 header .navbar .link.active-link:not(.logo) a {
   color: #08aeea;
@@ -49,7 +77,7 @@ header .navbar .link a {
   transition: color 0.2s ease-in-out;
 }
 header .navbar .link a:not(.logo):hover {
-  color: #040405;
+  color: #696b71;
 }
 header .navbar .link a svg {
   margin-right: 0.25rem;
@@ -129,6 +157,17 @@ header .navbar .link a svg {
   object-fit: cover;
 }
 
+@media screen and (max-width: 45rem) {
+  #home {
+    height: 80vh !important;
+  }
+  #home .col-home-svg {
+    height: 50vh !important;
+  }
+  #home .col-home-text {
+    height: 30vh !important;
+  }
+}
 .card {
   height: 75%;
   width: 100%;
@@ -232,13 +271,6 @@ video {
   .wrapper .col {
     width: 100% !important;
     height: 75vh !important;
-  }
-
-  #home {
-    height: 150vh !important;
-  }
-  #home .col-home-svg {
-    height: 50vh !important;
   }
 
   #about {

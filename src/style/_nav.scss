@@ -5,7 +5,7 @@ header {
   width: 100%;
   font-size: 1.25rem;
   color: colors.$gray-light-900;
-  background-color: rgba($color: colors.$gray-dark-300, $alpha: .5);
+  background-color: rgba($color: colors.$gray-dark-300, $alpha: 0.5);
   position: fixed;
   top: 0;
   left: 0;
@@ -13,11 +13,40 @@ header {
 
   .navbar {
     height: 100%;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .hamburgerMenu {
+      cursor: pointer;
+      font-size: 2rem;
+    }
+
+    &.mobile {
+      .left-side .nav-links,
+      .right-side {
+        display: none;
+      }
+      .hamburgerMenu {
+        display: block;
+      }
+      .menu {
+        display: block;
+      }
+    }
+
+    &.desktop {
+      .menu {
+        display: none;
+      }
+    }
+
+    .left-side {
+      display: flex;
+      align-items: center;
+    }
 
     .logo {
       display: flex;
@@ -25,6 +54,16 @@ header {
       img {
         height: 2rem;
       }
+    }
+
+    .right-side {
+      .link {
+        font-size: 1.5rem;
+      }
+    }
+
+    .hamburgerMenu {
+      display: none;
     }
 
     .nav-links {
@@ -37,9 +76,10 @@ header {
       text-decoration: none;
       display: flex;
       align-items: center;
+      margin-left: 0.5rem;
 
-      &:not(:nth-last-child(1)) {
-        margin-right: 1rem;
+      &:not(.logo-link):nth-child(1) {
+        margin-left: 1rem;
       }
 
       &.active-link:not(.logo) {
@@ -56,7 +96,7 @@ header {
         transition: color 0.2s ease-in-out;
 
         &:not(.logo):hover {
-          color: colors.$gray-dark-900;
+          color: colors.$gray-light-300;
         }
         svg {
           margin-right: 0.25rem;
