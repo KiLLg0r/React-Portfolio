@@ -15,8 +15,10 @@ const Nav = () => {
   };
 
   const updateMenu = (e) => {
-    if (menu) setMenu(false);
-    else setMenu(true);
+    if (width <= 720) {
+      if (menu) setMenu(false);
+      else setMenu(true);
+    }
   };
 
   const Menu = () => {
@@ -31,41 +33,56 @@ const Nav = () => {
   return (
     <header>
       <nav className={`navbar ${width <= 720 ? "mobile" : "desktop"}`}>
-        <div className="left-side">
+        <div className="logo-menu">
           <div className="logo">
             <a className="link logo-link" href="#home">
               <img src={logo} alt="logo" />
             </a>
           </div>
-          <ul className="nav-links">
-            <li className={`link home-link ${navLinks["home"] ? "active-link" : ""}`}>
+          <div className="menu" onClick={updateMenu}>
+            <Menu />
+          </div>
+        </div>
+        <ul className={`nav-links ${menu ? "closed" : "open"}`}>
+          <div className="left-side">
+            <li
+              className={`link home-link ${navLinks["home"] && width > 720 ? "active-link" : ""}`}
+              onClick={updateMenu}
+            >
               <a href="#home">
                 <BiHome />
                 Home
               </a>
             </li>
-            <li className={`link about-link ${navLinks["about"] ? "active-link" : ""}`}>
+            <li
+              className={`link about-link ${navLinks["about"] && width > 720 ? "active-link" : ""}`}
+              onClick={updateMenu}
+            >
               <a href="#about">
                 <BiInfoCircle />
                 About
               </a>
             </li>
-            <li className={`link projects-link ${navLinks["projects"] ? "active-link" : ""}`}>
+            <li
+              className={`link projects-link ${navLinks["projects"] && width > 720 ? "active-link" : ""}`}
+              onClick={updateMenu}
+            >
               <a href="#projects">
                 <BiFolder />
                 Projects
               </a>
             </li>
-            <li className={`link contact-link ${navLinks["contact"] ? "active-link" : ""}`}>
+            <li
+              className={`link contact-link ${navLinks["contact"] && width > 720 ? "active-link" : ""}`}
+              onClick={updateMenu}
+            >
               <a href="#contact">
                 <BiMailSend />
                 Contact
               </a>
             </li>
-          </ul>
-        </div>
-        <div className="right-side">
-          <div className="nav-links">
+          </div>
+          <div className="right-side">
             <li className="link github-link">
               <a href="https://github.com/KiLLg0r" target="_blank" rel="noreferrer">
                 <AiFillGithub />
@@ -82,10 +99,7 @@ const Nav = () => {
               </a>
             </li>
           </div>
-        </div>
-        <div className="menu" onClick={updateMenu}>
-          <Menu />
-        </div>
+        </ul>
       </nav>
     </header>
   );

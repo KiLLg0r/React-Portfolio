@@ -24,7 +24,7 @@
     }
     .main-subtitle {
       font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-      color: rgba($color: colors.$accent, $alpha: 0.85);
+      color: colors.$accent-dark-300;
       margin-bottom: 2rem;
     }
     .cta-btn {
@@ -77,12 +77,12 @@
 
 @media screen and (max-width: 45rem) {
   #home {
-    height: 80vh !important;
+    height: 100vh !important;
     .col-home-svg {
       height: 50vh !important;
     }
     .col-home-text {
-      height: 30vh !important;
+      height: 50vh !important;
     }
   }
 }

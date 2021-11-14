@@ -1,7 +1,7 @@
 @use "./colors" as colors;
 
 .card {
-  height: 75%;
+  height: 90%;
   width: 100%;
   background-color: rgba($color: colors.$gray-dark-300, $alpha: 0.75);
   margin-inline: 2rem;
@@ -35,6 +35,37 @@
   &.border-3::before {
     background: linear-gradient(#8ec5fc, #e0c3fc);
   }
+
+  .text {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5rem;
+
+    .icon {
+      margin-block: 1rem;
+      width: 10rem;
+      height: 10rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 0.25rem solid colors.$accent-light-400;
+      svg {
+        height: 6rem;
+        width: 90%;
+      }
+    }
+
+    .title {
+      font-size: 2rem;
+      color: colors.$gray-light-900;
+    }
+  }
 }
 
 @keyframes custom-border-animation {
@@ -43,5 +74,14 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 45rem) {
+  #about {
+    height: 525vh !important;
+    .col {
+      height: 175vh !important;
+    }
   }
 }

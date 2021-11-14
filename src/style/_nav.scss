@@ -1,7 +1,8 @@
 @use "./colors" as colors;
 
 header {
-  height: 4em;
+  height: auto;
+  padding-block: 1.25rem;
   width: 100%;
   font-size: 1.25rem;
   color: colors.$gray-light-900;
@@ -11,41 +12,30 @@ header {
   left: 0;
   z-index: 1000;
 
+  &.open {
+    height: auto;
+  }
+
   .navbar {
     height: 100%;
     width: 95%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
-    .hamburgerMenu {
-      cursor: pointer;
-      font-size: 2rem;
-    }
-
-    &.mobile {
-      .left-side .nav-links,
-      .right-side {
-        display: none;
-      }
-      .hamburgerMenu {
-        display: block;
-      }
-      .menu {
-        display: block;
-      }
-    }
-
-    &.desktop {
-      .menu {
-        display: none;
-      }
-    }
-
-    .left-side {
+    .left-side,
+    .right-side {
       display: flex;
       align-items: center;
+      justify-content: center;
+    }
+
+    .nav-links {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
     }
 
     .logo {
@@ -56,19 +46,62 @@ header {
       }
     }
 
+    .hamburgerMenu {
+      cursor: pointer;
+      font-size: 2rem;
+      display: block;
+    }
+
+    &.mobile {
+      flex-wrap: wrap;
+      .logo-menu {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .nav-links {
+        &.closed {
+          display: none;
+        }
+        &.open {
+          flex-direction: column;
+          width: 100%;
+          padding: 1rem 1.75rem;
+          overflow: auto;
+          .left-side {
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: right;
+          }
+          .right-side {
+            align-items: stretch;
+            justify-content: left;
+            .link {
+              margin-inline: 0.25rem;
+            }
+          }
+          .link {
+            margin-left: 0;
+            font-size: 1.5rem;
+            margin-block: 0.5rem;
+          }
+        }
+      }
+      .hamburgerMenu {
+        display: block;
+      }
+    }
+
+    &.desktop {
+      .hamburgerMenu {
+        display: none;
+      }
+    }
+
     .right-side {
       .link {
         font-size: 1.5rem;
       }
-    }
-
-    .hamburgerMenu {
-      display: none;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
     }
 
     .link {

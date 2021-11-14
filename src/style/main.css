@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 header {
-  height: 4em;
+  height: auto;
+  padding-block: 1.25rem;
   width: 100%;
   font-size: 1.25rem;
   color: #eaeaeb;
@@ -10,34 +11,28 @@ header {
   left: 0;
   z-index: 1000;
 }
+header.open {
+  height: auto;
+}
 header .navbar {
   height: 100%;
   width: 95%;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
-header .navbar .hamburgerMenu {
-  cursor: pointer;
-  font-size: 2rem;
-}
-header .navbar.mobile .left-side .nav-links,
-header .navbar.mobile .right-side {
-  display: none;
-}
-header .navbar.mobile .hamburgerMenu {
-  display: block;
-}
-header .navbar.mobile .menu {
-  display: block;
-}
-header .navbar.desktop .menu {
-  display: none;
-}
-header .navbar .left-side {
+header .navbar .left-side,
+header .navbar .right-side {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+header .navbar .nav-links {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
 }
 header .navbar .logo {
   display: flex;
@@ -46,15 +41,53 @@ header .navbar .logo {
 header .navbar .logo img {
   height: 2rem;
 }
-header .navbar .right-side .link {
-  font-size: 1.5rem;
-}
 header .navbar .hamburgerMenu {
+  cursor: pointer;
+  font-size: 2rem;
+  display: block;
+}
+header .navbar.mobile {
+  flex-wrap: wrap;
+}
+header .navbar.mobile .logo-menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+header .navbar.mobile .nav-links.closed {
   display: none;
 }
-header .navbar .nav-links {
-  display: flex;
-  list-style: none;
+header .navbar.mobile .nav-links.open {
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 1.75rem;
+  overflow: auto;
+}
+header .navbar.mobile .nav-links.open .left-side {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: right;
+}
+header .navbar.mobile .nav-links.open .right-side {
+  align-items: stretch;
+  justify-content: left;
+}
+header .navbar.mobile .nav-links.open .right-side .link {
+  margin-inline: 0.25rem;
+}
+header .navbar.mobile .nav-links.open .link {
+  margin-left: 0;
+  font-size: 1.5rem;
+  margin-block: 0.5rem;
+}
+header .navbar.mobile .hamburgerMenu {
+  display: block;
+}
+header .navbar.desktop .hamburgerMenu {
+  display: none;
+}
+header .navbar .right-side .link {
+  font-size: 1.5rem;
 }
 header .navbar .link {
   color: #eaeaeb;
@@ -112,7 +145,7 @@ header .navbar .link a svg {
 }
 #home .content .col-home-text .main-subtitle {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  color: rgba(8, 174, 234, 0.85);
+  color: #067aa4;
   margin-bottom: 2rem;
 }
 #home .content .col-home-text .cta-btn {
@@ -159,17 +192,17 @@ header .navbar .link a svg {
 
 @media screen and (max-width: 45rem) {
   #home {
-    height: 80vh !important;
+    height: 100vh !important;
   }
   #home .col-home-svg {
     height: 50vh !important;
   }
   #home .col-home-text {
-    height: 30vh !important;
+    height: 50vh !important;
   }
 }
 .card {
-  height: 75%;
+  height: 90%;
   width: 100%;
   background-color: rgba(28, 31, 36, 0.75);
   margin-inline: 2rem;
@@ -203,6 +236,34 @@ header .navbar .link a svg {
 .card.border-3::before {
   background: linear-gradient(#8ec5fc, #e0c3fc);
 }
+.card .text {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+.card .text .icon {
+  margin-block: 1rem;
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 0.25rem solid #6bcef2;
+}
+.card .text .icon svg {
+  height: 6rem;
+  width: 90%;
+}
+.card .text .title {
+  font-size: 2rem;
+  color: #eaeaeb;
+}
 
 @keyframes custom-border-animation {
   0% {
@@ -210,6 +271,14 @@ header .navbar .link a svg {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 45rem) {
+  #about {
+    height: 525vh !important;
+  }
+  #about .col {
+    height: 175vh !important;
   }
 }
 * {
@@ -222,6 +291,7 @@ header .navbar .link a svg {
 }
 
 section {
+  padding-top: 4rem;
   height: 100vh;
   background-color: #282c34;
   position: relative;
