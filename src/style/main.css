@@ -127,33 +127,36 @@ header .navbar .link a svg {
   height: 100%;
   width: 100%;
 }
-#home .content .col-home-text {
+#home .content .wrapper {
+  grid-template-columns: repeat(2, 1fr);
+}
+#home .content .wrapper .col-home-text {
   padding-inline: 10%;
   color: #eaeaeb;
   flex-direction: column;
   align-items: normal;
 }
-#home .content .col-home-text .main-title {
+#home .content .wrapper .col-home-text .main-title {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
 }
-#home .content .col-home-text .secondary-subtitle {
+#home .content .wrapper .col-home-text .secondary-subtitle {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   color: #94969a;
   margin-bottom: 1rem;
 }
-#home .content .col-home-text .main-subtitle {
+#home .content .wrapper .col-home-text .main-subtitle {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   color: #067aa4;
   margin-bottom: 2rem;
 }
-#home .content .col-home-text .btn-group {
+#home .content .wrapper .col-home-text .btn-group {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-#home .content .col-home-text .btn {
+#home .content .wrapper .col-home-text .btn {
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   text-decoration: none;
   display: flex;
@@ -164,26 +167,27 @@ header .navbar .link a svg {
   border-radius: 0.5rem;
   color: #eaeaeb;
   margin-right: 1rem;
+  white-space: nowrap;
 }
-#home .content .col-home-text .btn svg {
+#home .content .wrapper .col-home-text .btn svg {
   margin-right: 0.5rem;
 }
-#home .content .col-home-text .btn.cta-btn {
+#home .content .wrapper .col-home-text .btn.cta-btn {
   background-color: #08aeea;
 }
-#home .content .col-home-text .btn.cta-btn:hover {
+#home .content .wrapper .col-home-text .btn.cta-btn:hover {
   background-color: #05688c;
   transition: background-color 0.3s ease-in-out;
 }
-#home .content .col-home-text .btn.secondary-btn {
+#home .content .wrapper .col-home-text .btn.secondary-btn {
   outline: 2px solid #eaeaeb;
 }
-#home .content .col-home-text .btn.secondary-btn:hover {
+#home .content .wrapper .col-home-text .btn.secondary-btn:hover {
   background-color: #eaeaeb;
   color: #040405;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-#home .content .col-home-svg .browserWindow {
+#home .content .wrapper .col-home-svg .browserWindow {
   width: 90%;
   height: 70%;
   background-color: #20232a;
@@ -194,7 +198,7 @@ header .navbar .link a svg {
   align-items: center;
   justify-content: center;
 }
-#home .content .col-home-svg .browserWindow::before {
+#home .content .wrapper .col-home-svg .browserWindow::before {
   content: "";
   position: absolute;
   top: 0;
@@ -204,42 +208,36 @@ header .navbar .link a svg {
   background-color: rgba(8, 174, 234, 0.9);
   border-radius: 1rem 1rem 0 0;
 }
-#home .content .col-home-svg svg {
+#home .content .wrapper .col-home-svg svg {
   width: 85%;
   aspect-ratio: 1;
   object-fit: cover;
 }
 
 @media screen and (max-width: 930px) {
-  #home .wrapper {
-    flex-direction: column-reverse;
+  #home .content .wrapper {
+    grid-template-columns: none;
   }
-  #home .col-home-svg {
+  #home .content .col-home-svg {
     height: 50vh !important;
+    order: 1;
   }
-  #home .col-home-text {
+  #home .content .col-home-text {
     height: 50vh !important;
     justify-content: center;
     align-items: flex-start;
+    order: 2;
   }
 }
-#about {
-  height: auto !important;
-  min-height: 100vh;
-}
 #about .wrapper {
-  flex-wrap: wrap;
-}
-#about .wrapper .col {
-  flex: 1 1 33%;
+  grid-template-columns: repeat(3, 1fr);
 }
 #about .wrapper .col .card {
-  margin: 2.5% 0;
+  margin: 2.5% 2rem;
   min-height: 80vh;
   max-height: 90vh;
   width: 100%;
-  background-color: rgba(28, 31, 36, 0.75);
-  margin-inline: 2rem;
+  background-color: #1c1f24;
   border-radius: 1rem;
   overflow: hidden;
   display: flex;
@@ -358,12 +356,20 @@ header .navbar .link a svg {
     transform: rotate(360deg);
   }
 }
+@media screen and (min-width: 931px) and (max-width: 1200px) {
+  #about {
+    height: auto !important;
+  }
+  #about .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media screen and (max-width: 930px) {
   #about {
     height: auto !important;
   }
   #about .wrapper {
-    flex-direction: column;
+    grid-template-columns: none;
   }
   #about .wrapper .col {
     height: auto !important;
@@ -389,7 +395,8 @@ header .navbar .link a svg {
 
 section {
   padding-top: 4rem;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   background-color: #282c34;
   position: relative;
   width: 100%;
@@ -418,10 +425,10 @@ video {
 }
 
 .wrapper {
-  display: flex;
-  align-items: center;
+  display: grid;
   width: 100%;
   height: 100%;
+  place-items: center;
 }
 .wrapper .col {
   width: 100%;

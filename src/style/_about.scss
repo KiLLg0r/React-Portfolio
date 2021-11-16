@@ -1,19 +1,15 @@
 @use "./colors" as colors;
 
 #about {
-  height: auto !important;
-  min-height: 100vh;
   .wrapper {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
     .col {
-      flex: 1 1 33%;
       .card {
-        margin: 2.5% 0;
+        margin: 2.5% 2rem;
         min-height: 80vh;
         max-height: 90vh;
         width: 100%;
-        background-color: rgba($color: colors.$gray-dark-300, $alpha: 0.75);
-        margin-inline: 2rem;
+        background-color: colors.$gray-dark-300;
         border-radius: 1rem;
         overflow: hidden;
         display: flex;
@@ -149,11 +145,20 @@
   }
 }
 
+@media screen and (min-width: 931px) and (max-width: 1200px) {
+  #about {
+    height: auto !important;
+    .wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
 @media screen and (max-width: 930px) {
   #about {
     height: auto !important;
     .wrapper {
-      flex-direction: column;
+      grid-template-columns: none;
       .col {
         height: auto !important;
         .card {
