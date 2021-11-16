@@ -155,6 +155,7 @@ header .navbar .link a svg {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
 }
 #home .content .wrapper .col-home-text .btn {
   font-size: clamp(1.25rem, 2vw, 1.5rem);
