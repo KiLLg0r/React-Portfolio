@@ -27,20 +27,43 @@
       color: colors.$accent-dark-300;
       margin-bottom: 2rem;
     }
-    .cta-btn {
-      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-      color: colors.$gray-light-900;
+
+    .btn-group {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .btn {
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
       text-decoration: none;
       display: flex;
       align-items: center;
-      background-color: rgba($color: colors.$accent, $alpha: 0.9);
+      justify-content: space-between;
       width: fit-content;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
+      color: colors.$gray-light-900;
+      margin-right: 1rem;
 
-      &:hover {
-        background-color: rgba($color: colors.$accent, $alpha: 0.55);
-        transition: background-color 0.3s ease-in-out;
+      svg {
+        margin-right: 0.5rem;
+      }
+
+      &.cta-btn {
+        background-color: colors.$accent;
+        &:hover {
+          background-color: colors.$accent-dark-400;
+          transition: background-color 0.3s ease-in-out;
+        }
+      }
+
+      &.secondary-btn {
+        outline: 2px solid colors.$gray-light-900;
+        &:hover {
+          background-color: colors.$gray-light-900;
+          color: colors.$gray-dark-900;
+          transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
       }
     }
   }
@@ -75,14 +98,18 @@
   }
 }
 
-@media screen and (max-width: 45rem) {
+@media screen and (max-width: 930px) {
   #home {
-    height: 100vh !important;
+    .wrapper {
+      flex-direction: column-reverse;
+    }
     .col-home-svg {
       height: 50vh !important;
     }
     .col-home-text {
       height: 50vh !important;
+      justify-content: center;
+      align-items: flex-start;
     }
   }
 }

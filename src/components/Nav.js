@@ -11,7 +11,6 @@ const Nav = () => {
 
   const updateWidth = () => {
     setWidth(window.innerWidth);
-    console.log(width);
   };
 
   const updateMenu = (e) => {

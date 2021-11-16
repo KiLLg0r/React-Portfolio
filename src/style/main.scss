@@ -57,19 +57,3 @@ video {
     align-items: center;
   }
 }
-
-@media screen and (max-width: 45rem) {
-  .wrapper {
-    flex-direction: column-reverse !important;
-    .col {
-      width: 100% !important;
-      height: 75vh !important;
-    }
-  }
-  #about {
-    height: 525vh !important;
-    .col {
-      height: 175vh !important;
-    }
-  }
-}

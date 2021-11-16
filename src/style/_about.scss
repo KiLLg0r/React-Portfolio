@@ -1,69 +1,141 @@
 @use "./colors" as colors;
 
-.card {
-  height: 90%;
-  width: 100%;
-  background-color: rgba($color: colors.$gray-dark-300, $alpha: 0.75);
-  margin-inline: 2rem;
-  border-radius: 1rem;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+#about {
+  height: auto !important;
+  min-height: 100vh;
+  .wrapper {
+    flex-wrap: wrap;
+    .col {
+      flex: 1 1 33%;
+      .card {
+        margin: 2.5% 0;
+        min-height: 80vh;
+        max-height: 90vh;
+        width: 100%;
+        background-color: rgba($color: colors.$gray-dark-300, $alpha: 0.75);
+        margin-inline: 2rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
-  &.custom-border::before {
-    content: "";
-    position: absolute;
-    height: 150%;
-    width: 50%;
-    animation: custom-border-animation 3s linear infinite;
-  }
-  &.custom-border::after {
-    position: absolute;
-    content: "";
-    inset: 0.5rem;
-    background-color: colors.$gray-dark-300;
-    border-radius: 0.625rem;
-  }
-  &.border-1::before {
-    background: linear-gradient(#08aeea, #2af598);
-  }
-  &.border-2::before {
-    background: linear-gradient(#ffe53b, #ff2525);
-  }
-  &.border-3::before {
-    background: linear-gradient(#8ec5fc, #e0c3fc);
-  }
+        &.custom-border::before {
+          content: "";
+          position: absolute;
+          height: 500%;
+          width: 50%;
+          animation: custom-border-animation 5s linear infinite;
+        }
+        &.custom-border::after {
+          position: absolute;
+          content: "";
+          inset: 0.5rem;
+          background-color: colors.$gray-dark-300;
+          border-radius: 0.625rem;
+        }
+        &.border-1 {
+          .icon::before {
+            background: linear-gradient(90deg, #08aeea, #2af598);
+          }
+          .desc span {
+            background: linear-gradient(90deg, #08aeea, #2af598);
+          }
+          &::before {
+            background: linear-gradient(#08aeea, #2af598);
+          }
+        }
+        &.border-2 {
+          .icon::before {
+            background: linear-gradient(90deg, #ffe53b, #ff2525);
+          }
+          .desc span {
+            background: linear-gradient(45deg, #ffe53b, #ff2525);
+          }
+          &::before {
+            background: linear-gradient(#ffe53b, #ff2525);
+          }
+        }
+        &.border-3 {
+          .icon::before {
+            background: linear-gradient(90deg, #8ec5fc, #e0c3fc);
+          }
+          .desc span {
+            background: linear-gradient(90deg, #8ec5fc, #e0c3fc);
+          }
+          &::before {
+            background: linear-gradient(#8ec5fc, #e0c3fc);
+          }
+        }
 
-  .text {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 0.5rem;
+        .text {
+          height: auto;
+          width: 100%;
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          margin: 0.5rem;
+          margin-block: auto;
+          padding: 0.5rem;
+          padding-bottom: 2rem;
 
-    .icon {
-      margin-block: 1rem;
-      width: 10rem;
-      height: 10rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      border: 0.25rem solid colors.$accent-light-400;
-      svg {
-        height: 6rem;
-        width: 90%;
+          .icon {
+            margin-block: 1rem;
+            width: 10rem;
+            height: 10rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+              content: "";
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              inset: 0;
+            }
+            &::after {
+              content: "";
+              position: absolute;
+              inset: 0.25rem;
+              z-index: 2;
+              background: colors.$gray-dark-300;
+              border-radius: 50%;
+            }
+            svg {
+              position: relative;
+              z-index: 3;
+              height: 6rem;
+              width: 8rem;
+            }
+          }
+
+          .title {
+            font-size: 2rem;
+            color: colors.$gray-light-900;
+          }
+
+          .desc {
+            color: colors.$gray-light-700;
+            font-size: 1.25rem;
+            padding-top: 1.5rem;
+            padding-inline: 3rem;
+            text-align: center;
+
+            span {
+              font-weight: 600;
+              background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
       }
-    }
-
-    .title {
-      font-size: 2rem;
-      color: colors.$gray-light-900;
     }
   }
 }
@@ -77,11 +149,23 @@
   }
 }
 
-@media screen and (max-width: 45rem) {
+@media screen and (max-width: 930px) {
   #about {
-    height: 525vh !important;
-    .col {
-      height: 175vh !important;
+    height: auto !important;
+    .wrapper {
+      flex-direction: column;
+      .col {
+        height: auto !important;
+        .card {
+          height: auto;
+          padding: 3rem 0.5rem;
+        }
+        .text {
+          margin: 0;
+          padding: 0;
+        }
+        margin-block: 2rem;
+      }
     }
   }
 }

@@ -148,20 +148,40 @@ header .navbar .link a svg {
   color: #067aa4;
   margin-bottom: 2rem;
 }
-#home .content .col-home-text .cta-btn {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  color: #eaeaeb;
+#home .content .col-home-text .btn-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#home .content .col-home-text .btn {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   text-decoration: none;
   display: flex;
   align-items: center;
-  background-color: rgba(8, 174, 234, 0.9);
+  justify-content: space-between;
   width: fit-content;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  color: #eaeaeb;
+  margin-right: 1rem;
 }
-#home .content .col-home-text .cta-btn:hover {
-  background-color: rgba(8, 174, 234, 0.55);
+#home .content .col-home-text .btn svg {
+  margin-right: 0.5rem;
+}
+#home .content .col-home-text .btn.cta-btn {
+  background-color: #08aeea;
+}
+#home .content .col-home-text .btn.cta-btn:hover {
+  background-color: #05688c;
   transition: background-color 0.3s ease-in-out;
+}
+#home .content .col-home-text .btn.secondary-btn {
+  outline: 2px solid #eaeaeb;
+}
+#home .content .col-home-text .btn.secondary-btn:hover {
+  background-color: #eaeaeb;
+  color: #040405;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 #home .content .col-home-svg .browserWindow {
   width: 90%;
@@ -190,19 +210,33 @@ header .navbar .link a svg {
   object-fit: cover;
 }
 
-@media screen and (max-width: 45rem) {
-  #home {
-    height: 100vh !important;
+@media screen and (max-width: 930px) {
+  #home .wrapper {
+    flex-direction: column-reverse;
   }
   #home .col-home-svg {
     height: 50vh !important;
   }
   #home .col-home-text {
     height: 50vh !important;
+    justify-content: center;
+    align-items: flex-start;
   }
 }
-.card {
-  height: 90%;
+#about {
+  height: auto !important;
+  min-height: 100vh;
+}
+#about .wrapper {
+  flex-wrap: wrap;
+}
+#about .wrapper .col {
+  flex: 1 1 33%;
+}
+#about .wrapper .col .card {
+  margin: 2.5% 0;
+  min-height: 80vh;
+  max-height: 90vh;
   width: 100%;
   background-color: rgba(28, 31, 36, 0.75);
   margin-inline: 2rem;
@@ -213,40 +247,61 @@ header .navbar .link a svg {
   align-items: center;
   position: relative;
 }
-.card.custom-border::before {
+#about .wrapper .col .card.custom-border::before {
   content: "";
   position: absolute;
-  height: 150%;
+  height: 500%;
   width: 50%;
-  animation: custom-border-animation 3s linear infinite;
+  animation: custom-border-animation 5s linear infinite;
 }
-.card.custom-border::after {
+#about .wrapper .col .card.custom-border::after {
   position: absolute;
   content: "";
   inset: 0.5rem;
   background-color: #1c1f24;
   border-radius: 0.625rem;
 }
-.card.border-1::before {
+#about .wrapper .col .card.border-1 .icon::before {
+  background: linear-gradient(90deg, #08aeea, #2af598);
+}
+#about .wrapper .col .card.border-1 .desc span {
+  background: linear-gradient(90deg, #08aeea, #2af598);
+}
+#about .wrapper .col .card.border-1::before {
   background: linear-gradient(#08aeea, #2af598);
 }
-.card.border-2::before {
+#about .wrapper .col .card.border-2 .icon::before {
+  background: linear-gradient(90deg, #ffe53b, #ff2525);
+}
+#about .wrapper .col .card.border-2 .desc span {
+  background: linear-gradient(45deg, #ffe53b, #ff2525);
+}
+#about .wrapper .col .card.border-2::before {
   background: linear-gradient(#ffe53b, #ff2525);
 }
-.card.border-3::before {
+#about .wrapper .col .card.border-3 .icon::before {
+  background: linear-gradient(90deg, #8ec5fc, #e0c3fc);
+}
+#about .wrapper .col .card.border-3 .desc span {
+  background: linear-gradient(90deg, #8ec5fc, #e0c3fc);
+}
+#about .wrapper .col .card.border-3::before {
   background: linear-gradient(#8ec5fc, #e0c3fc);
 }
-.card .text {
-  height: 100%;
+#about .wrapper .col .card .text {
+  height: auto;
   width: 100%;
   position: relative;
-  z-index: 5;
+  z-index: 1;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 0.5rem;
+  margin-block: auto;
   padding: 0.5rem;
+  padding-bottom: 2rem;
 }
-.card .text .icon {
+#about .wrapper .col .card .text .icon {
   margin-block: 1rem;
   width: 10rem;
   height: 10rem;
@@ -254,15 +309,45 @@ header .navbar .link a svg {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 0.25rem solid #6bcef2;
+  position: relative;
+  overflow: hidden;
 }
-.card .text .icon svg {
+#about .wrapper .col .card .text .icon::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+}
+#about .wrapper .col .card .text .icon::after {
+  content: "";
+  position: absolute;
+  inset: 0.25rem;
+  z-index: 2;
+  background: #1c1f24;
+  border-radius: 50%;
+}
+#about .wrapper .col .card .text .icon svg {
+  position: relative;
+  z-index: 3;
   height: 6rem;
-  width: 90%;
+  width: 8rem;
 }
-.card .text .title {
+#about .wrapper .col .card .text .title {
   font-size: 2rem;
   color: #eaeaeb;
+}
+#about .wrapper .col .card .text .desc {
+  color: #bfc0c2;
+  font-size: 1.25rem;
+  padding-top: 1.5rem;
+  padding-inline: 3rem;
+  text-align: center;
+}
+#about .wrapper .col .card .text .desc span {
+  font-weight: 600;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes custom-border-animation {
@@ -273,12 +358,24 @@ header .navbar .link a svg {
     transform: rotate(360deg);
   }
 }
-@media screen and (max-width: 45rem) {
+@media screen and (max-width: 930px) {
   #about {
-    height: 525vh !important;
+    height: auto !important;
   }
-  #about .col {
-    height: 175vh !important;
+  #about .wrapper {
+    flex-direction: column;
+  }
+  #about .wrapper .col {
+    height: auto !important;
+    margin-block: 2rem;
+  }
+  #about .wrapper .col .card {
+    height: auto;
+    padding: 3rem 0.5rem;
+  }
+  #about .wrapper .col .text {
+    margin: 0;
+    padding: 0;
   }
 }
 * {
@@ -332,23 +429,6 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@media screen and (max-width: 45rem) {
-  .wrapper {
-    flex-direction: column-reverse !important;
-  }
-  .wrapper .col {
-    width: 100% !important;
-    height: 75vh !important;
-  }
-
-  #about {
-    height: 525vh !important;
-  }
-  #about .col {
-    height: 175vh !important;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */
