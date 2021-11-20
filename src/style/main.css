@@ -140,15 +140,21 @@ header .navbar .link a svg {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
+  color: #e6f7fd;
+}
+#home .content .wrapper .col-home-text .main-title span {
+  background: linear-gradient(90deg, #08aeea, #2af598);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #home .content .wrapper .col-home-text .secondary-subtitle {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  color: #94969a;
+  color: #d4d5d6;
   margin-bottom: 1rem;
 }
 #home .content .wrapper .col-home-text .main-subtitle {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  color: #067aa4;
+  color: #39beee;
   margin-bottom: 2rem;
 }
 #home .content .wrapper .col-home-text .btn-group {
@@ -175,7 +181,7 @@ header .navbar .link a svg {
   margin-right: 0.5rem;
 }
 #home .content .wrapper .col-home-text .btn.cta-btn {
-  background-color: #08aeea;
+  background-color: #079dd3;
 }
 #home .content .wrapper .col-home-text .btn.cta-btn:hover {
   background-color: #05688c;
@@ -396,62 +402,82 @@ header .navbar .link a svg {
   width: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
-#projects .react .svg {
-  content: "";
-  position: absolute;
-  height: 150%;
-  width: 50%;
-  top: 0;
-  left: 0;
+#projects .react .svg,
+#projects .laravel .svg {
+  position: relative;
+  height: 100%;
+  width: 25%;
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
   background-color: #045775;
-  transform: rotate(-70deg);
-  left: -20%;
+  display: grid;
+  place-items: center;
 }
-#projects .react .svg svg {
-  width: 50%;
-  transform: rotate(70deg);
+#projects .react .svg .title,
+#projects .laravel .svg .title {
+  position: relative;
+  z-index: 10;
+  color: #eaeaeb;
+  font-size: 2rem;
+  text-align: center;
+  height: 25%;
 }
-#projects .laravel {
-  background: linear-gradient(110deg, #282c34 27.25%, #045775 25%);
+#projects .react .svg svg,
+#projects .laravel .svg svg {
+  height: 75%;
+  width: 75%;
+  margin-right: 25%;
 }
 
+@media screen and (max-width: 930px) {
+  #projects {
+    height: 200vh;
+  }
+  #projects .react,
+#projects .laravel {
+    display: block;
+  }
+  #projects .react .svg,
+#projects .laravel .svg {
+    margin-inline: auto;
+    clip-path: none;
+    height: 50%;
+    width: 75%;
+    border-radius: 0.5rem;
+  }
+  #projects .react .svg svg,
+#projects .laravel .svg svg {
+    margin-right: 0;
+  }
+}
 #contact {
   padding: 5rem 10rem;
 }
 #contact .ct {
   width: 100%;
   height: 100%;
+  position: relative;
+}
+#contact .line {
+  position: absolute;
+  top: 2rem;
+  left: -10rem;
+  height: 0.25rem;
+  width: 80vw;
+  background: #eaeaeb;
+  z-index: 50;
 }
 #contact .title {
   font-size: 3rem;
   color: #eaeaeb;
   position: relative;
-  width: fit-content;
+  width: 12rem;
   background-color: #282c34;
   height: auto;
+  text-align: center;
   z-index: 100;
-}
-#contact .title::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -100%;
-  transform: translateY(-50%);
-  height: 0.25rem;
-  width: 10vw;
-  background: #eaeaeb;
-  z-index: 50;
-}
-#contact .title::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 110%;
-  transform: translateY(-50%);
-  height: 0.25rem;
-  width: 50vw;
-  background: #eaeaeb;
 }
 #contact .contact-form {
   margin-top: auto;
@@ -567,12 +593,15 @@ header .navbar .link a svg {
   transition: all 0.35s;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 930px) {
   #contact {
-    padding: 5rem;
+    padding: 1rem;
   }
   #contact .wrapper {
     display: block;
+  }
+  #contact .line {
+    left: -1rem;
   }
 }
 * {

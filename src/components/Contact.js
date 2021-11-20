@@ -25,6 +25,7 @@ const Contact = () => {
 
   return (
     <div className="ct">
+      <div className="line"></div>
       <div className="title">Contact</div>
       <form onSubmit={handleSumbit} className="contact-form">
         {error && (

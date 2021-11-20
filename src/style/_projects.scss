@@ -9,27 +9,49 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-  }
-  .react {
-    // background: linear-gradient(110deg, colors.$accent-dark-500 35%, colors.$gray 35%);
+    display: flex;
+    align-items: center;
     .svg {
-      content: "";
-      position: absolute;
-      height: 150%;
-      width: 50%;
-      top: 0;
-      left: 0;
+      position: relative;
+      height: 100%;
+      width: 25%;
+      clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
       background-color: colors.$accent-dark-500;
-      transform: rotate(-70deg);
-      left: -20%;
-
+      display: grid;
+      place-items: center;
+      .title {
+        position: relative;
+        z-index: 10;
+        color: colors.$gray-light-900;
+        font-size: 2rem;
+        text-align: center;
+        height: 25%;
+      }
       svg {
-        width: 50%;
-        transform: rotate(70deg);
+        height: 75%;
+        width: 75%;
+        margin-right: 25%;
       }
     }
   }
-  .laravel {
-    background: linear-gradient(110deg, colors.$gray 27.25%, colors.$accent-dark-500 25%);
+}
+
+@media screen and (max-width: 930px) {
+  #projects {
+    height: 200vh;
+    .react,
+    .laravel {
+      display: block;
+      .svg {
+        margin-inline: auto;
+        clip-path: none;
+        height: 50%;
+        width: 75%;
+        border-radius: 0.5rem;
+        svg {
+          margin-right: 0;
+        }
+      }
+    }
   }
 }

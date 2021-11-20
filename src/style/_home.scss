@@ -17,15 +17,22 @@
         font-size: clamp(1.5rem, 5vw, 2.5rem);
         font-weight: 700;
         margin-bottom: 1rem;
+        color: colors.$accent-light-900;
+
+        span {
+          background: linear-gradient(90deg,colors.$accent, #2af598);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
       }
       .secondary-subtitle {
         font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-        color: colors.$gray-light-500;
+        color: colors.$gray-light-800;
         margin-bottom: 1rem;
       }
       .main-subtitle {
         font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-        color: colors.$accent-dark-300;
+        color: colors.$accent-light-200;
         margin-bottom: 2rem;
       }
 
@@ -54,7 +61,7 @@
         }
 
         &.cta-btn {
-          background-color: colors.$accent;
+          background-color: colors.$accent-dark-100;
           &:hover {
             background-color: colors.$accent-dark-400;
             transition: background-color 0.3s ease-in-out;
