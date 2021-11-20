@@ -158,7 +158,7 @@ header .navbar .link a svg {
   flex-wrap: wrap;
 }
 #home .content .wrapper .col-home-text .btn {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-size: 1.5rem;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -168,6 +168,7 @@ header .navbar .link a svg {
   border-radius: 0.5rem;
   color: #eaeaeb;
   margin-right: 1rem;
+  margin-bottom: 1rem;
   white-space: nowrap;
 }
 #home .content .wrapper .col-home-text .btn svg {
@@ -385,6 +386,195 @@ header .navbar .link a svg {
     padding: 0;
   }
 }
+#projects {
+  display: block;
+  height: 100vh;
+}
+#projects .react,
+#projects .laravel {
+  height: 50%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#projects .react .svg {
+  content: "";
+  position: absolute;
+  height: 150%;
+  width: 50%;
+  top: 0;
+  left: 0;
+  background-color: #045775;
+  transform: rotate(-70deg);
+  left: -20%;
+}
+#projects .react .svg svg {
+  width: 50%;
+  transform: rotate(70deg);
+}
+#projects .laravel {
+  background: linear-gradient(110deg, #282c34 27.25%, #045775 25%);
+}
+
+#contact {
+  padding: 5rem 10rem;
+}
+#contact .ct {
+  width: 100%;
+  height: 100%;
+}
+#contact .title {
+  font-size: 3rem;
+  color: #eaeaeb;
+  position: relative;
+  width: fit-content;
+  background-color: #282c34;
+  height: auto;
+  z-index: 100;
+}
+#contact .title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  transform: translateY(-50%);
+  height: 0.25rem;
+  width: 10vw;
+  background: #eaeaeb;
+  z-index: 50;
+}
+#contact .title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translateY(-50%);
+  height: 0.25rem;
+  width: 50vw;
+  background: #eaeaeb;
+}
+#contact .contact-form {
+  margin-top: auto;
+}
+#contact .wrapper.first-w {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+#contact .f-wrapper {
+  position: relative;
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  margin-block: 1.25rem;
+}
+#contact .f-wrapper .label {
+  position: absolute;
+  top: 50%;
+  left: 0.65rem;
+  transform: translateY(-50%);
+  color: #94969a;
+  padding: 0.25rem 0.5rem;
+  pointer-events: none;
+  transition: all 0.35s;
+}
+#contact .f-wrapper .icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  font-size: 1.675rem;
+  color: #94969a;
+  transition: all 0.35s;
+}
+#contact .f-wrapper input,
+#contact .f-wrapper textarea {
+  height: inherit;
+  width: 100%;
+  border: 2px solid #94969a;
+  border-radius: 0.5rem;
+  outline: none;
+  background: transparent;
+  color: #eaeaeb;
+  font-size: 1rem;
+  text-indent: 1rem;
+  transition: all 0.35s;
+  text-indent: 4rem;
+  padding-right: 3rem;
+}
+#contact .f-wrapper input:focus,
+#contact .f-wrapper textarea:focus {
+  border-color: #08aeea;
+  text-indent: 1rem;
+}
+#contact .f-wrapper input:focus ~ .icon,
+#contact .f-wrapper textarea:focus ~ .icon {
+  color: #08aeea;
+}
+#contact .f-wrapper input:focus ~ .label {
+  background: #282c34;
+  color: #08aeea;
+  transform: translateY(-2.875rem);
+}
+#contact .w-message {
+  height: 15rem;
+}
+#contact .w-message .icon {
+  top: 1rem;
+  transform: translateY(0);
+}
+#contact .w-message .label {
+  top: 0.8rem;
+  transform: translateY(0);
+}
+#contact .w-message textarea {
+  padding-left: 1rem;
+  padding-top: 2.5rem;
+  text-indent: 0;
+}
+#contact .w-message textarea:focus {
+  padding-top: 1rem;
+  text-indent: 0;
+}
+#contact .w-message textarea:focus ~ .label {
+  background: #282c34;
+  color: #08aeea;
+  transform: translateY(-1.8625rem);
+}
+#contact .contact-btn {
+  height: 4rem;
+  width: 100%;
+  background-color: #08aeea;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  transition: all 0.35s;
+  cursor: pointer;
+}
+#contact .contact-btn:hover {
+  background-color: #045775;
+  color: #eaeaeb;
+}
+#contact .alert {
+  margin-top: 1rem;
+  border: 2px solid #a82933;
+  color: #a82933;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 4rem;
+  line-height: 3.5rem;
+  padding-inline: 1.25rem;
+  border-radius: 0.5rem;
+  transition: all 0.35s;
+}
+
+@media screen and (max-width: 720px) {
+  #contact {
+    padding: 5rem;
+  }
+  #contact .wrapper {
+    display: block;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -431,7 +621,8 @@ video {
   height: 100%;
   place-items: center;
 }
-.wrapper .col {
+
+.col {
   width: 100%;
   height: 100%;
   display: flex;

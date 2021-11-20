@@ -1,0 +1,35 @@
+@use "./colors" as colors;
+
+#projects {
+  display: block;
+  height: 100vh;
+  .react,
+  .laravel {
+    height: 50%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .react {
+    // background: linear-gradient(110deg, colors.$accent-dark-500 35%, colors.$gray 35%);
+    .svg {
+      content: "";
+      position: absolute;
+      height: 150%;
+      width: 50%;
+      top: 0;
+      left: 0;
+      background-color: colors.$accent-dark-500;
+      transform: rotate(-70deg);
+      left: -20%;
+
+      svg {
+        width: 50%;
+        transform: rotate(70deg);
+      }
+    }
+  }
+  .laravel {
+    background: linear-gradient(110deg, colors.$gray 27.25%, colors.$accent-dark-500 25%);
+  }
+}
